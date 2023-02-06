@@ -2,68 +2,9 @@
 //
 
 #include <iostream>
+#include "LinkedListSample.cpp"
 using namespace std;
 
-class ListNode
-{
-public:
-	int value;
-	ListNode* next = NULL;
-
-	ListNode(int value) {
-		this->value = value;
-	}
-
-	void print()
-	{
-		cout << value << " " << next << "\n";
-	}
-};
-
-class LinkedListQueueStack
-{
-public:
-	ListNode* first = NULL;
-	ListNode* last = first;
-
-	void enqueue(int value)
-	{
-		ListNode* node = new ListNode(value);
-		if (first == NULL) {
-			first = node;
-			last = first;
-		}
-		else
-		{
-			last->next = node;
-			last = node;
-		}
-	}
-
-	void push(int value) {
-		ListNode* node = new ListNode(value);
-		node->next = first;
-		first = node;
-	}
-
-	int dequeue() {
-		if (first == NULL)return NULL;
-		ListNode* ret = first;
-		first = first->next;
-		return ret->value;
-	}
-
-	int pop() {
-		return dequeue();
-	}
-
-	void print() {
-		if (first == NULL)return;
-		for (ListNode* node = first; node != NULL; node = node->next) {
-			node->print();
-		}
-	}
-};
 
 int main()
 {
@@ -86,6 +27,7 @@ int main()
 	list.push(5);
 	list.push(6);
 	list.push(7);
+	list.print();
 	cout << list.pop();
 	cout << list.pop();
 	cout << list.pop();
